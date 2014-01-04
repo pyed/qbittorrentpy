@@ -34,8 +34,12 @@ class Torrent(object):
             'MiB': 1048576,
             'GiB': 1073741824
             }
-        
-        return int(float(self.size[:-4]) * units[self.size[-3:]])
+        try: 
+            value = int(float(self.size[:-4]) * units[self.size[-3:]])
+        except:
+            value = self.size
+
+        return value
     def properties(self):
         return self._GetRequest('/json/propertiesGeneral/')
 
