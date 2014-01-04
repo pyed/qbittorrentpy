@@ -4,7 +4,7 @@ from requests.auth import HTTPDigestAuth
 from Torrent import Torrent
 
 class Client(object):
-    """ class handling qBittorrent API """
+    """ handle qBittorrent API """
 
     def __init__(self, address='localhost', port=8080, username=None, password=None):
         self.address = address
