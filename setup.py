@@ -5,7 +5,7 @@ from setuptools import setup
 config = {
         'name': 'qBittorrentPy',
         'version': 0.1,
-        'description': 'python module interacts with qBittorrent API',
+        'description': 'python module to interact with qBittorrent API',
         'author': 'Abdulelah Alfntokh',
         'author_email': 'iAbdulelah@gmail.com',
         'url': 'http://github.com/pyed/qbittorrentpy',
