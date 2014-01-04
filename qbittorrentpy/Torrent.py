@@ -6,6 +6,7 @@ class Torrent(object):
         self.thash = info['hash']
         self.name = info['name']
         self.size = info['size']
+        self.bytes_size = self._bytes_size()
 
         self._session = session
         self._url = url
@@ -27,6 +28,14 @@ class Torrent(object):
 
         if echo: return respond.json()
 
+    def _bytes_size(self):
+        units = {
+            'KiB': 1024,
+            'MiB': 1048576,
+            'GiB': 1073741824
+            }
+        
+        return int(float(self.size[:-4]) * units[self.size[-3:]])
     def properties(self):
         return self._GetRequest('/json/propertiesGeneral/')
 
