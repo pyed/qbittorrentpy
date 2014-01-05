@@ -3,7 +3,7 @@ Simple python module to interact with [qBittorrent](https://github.com/qbittorre
 
 Requestemetns
 ------
-    * [requests](https://github.com/kennethreitz/requests)
+    [requests](https://github.com/kennethreitz/requests)
 
 How to install ?
 -----
