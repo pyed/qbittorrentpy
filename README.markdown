@@ -1,4 +1,4 @@
-Simple python module to interact with [qBittorrent]( API
+Simple python module to interact with [qBittorrent](https://github.com/qbittorrent/qBittorrent)
 ---------------------------------
 
 Requestemetns
@@ -15,7 +15,7 @@ How to use ?
 the `Client` object:
 ~~~~~ python
 import qbittorrentpy
-c = qbittorrentpy.Client('localhost', port=9091)        # connect to qbittorent
+c = qbittorrentpy.Client('localhost', username='me', password='you', port=9091)        # connect to qbittorent
 
 c.torrents()    # return torrents list
 #[Out]# [u'ubuntu-12.04.3-alternate-amd64.iso']
