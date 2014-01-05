@@ -1,15 +1,18 @@
-Simple python module to interact with qBittorrent/qBittorrent API
-============================================================
+Simple python module to interact with qBittorrent API
+---------------------------------
 
-*How to use*
+Usage
+------
+
+the `Client` object:
 ~~~~~ python
 import qbittorrentpy
-c = qbittorrentpy.Client('localhost', port=9091)
+c = qbittorrentpy.Client('localhost', port=9091)                                        # connect to qbittorent
 
-c.torrents()
+c.torrents()                                                                            # return torrents list
 #[Out]# [u'ubuntu-12.04.3-alternate-amd64.iso']
 
-c.get_transinfo()
+c.get_transinfo()                                                                       # return the current speeds
 #[Out]# {u'dl_info': u'D: 5.2 KiB/s - T: 143.8 KiB', u'up_info': u'U: 0 B/s - T: 0 B'}
 
 c.pause_all()
@@ -29,19 +32,19 @@ c.set_uploadlimit(4321)
 c.get_uploadlimit()
 #[Out]# 4321
 
-c.add_torrentlink('http://releases.ubuntu.com/13.10/ubuntu-13.10-desktop-amd64.iso.torrent')
+c.add_torrentlink('http://releases.ubuntu.com/13.10/ubuntu-13.10-desktop-amd64.iso.torrent')  # add torrent via link
 
 c.torrents()
-#[Out]# [u'ubuntu-12.04.3-alternate-amd64.iso', u'ubuntu-13.10-desktop-amd64.iso']
+#[Out]# [u'ubuntu-12.04.3-alternate-amd64.iso', u'ubuntu-13.10-desktop-amd64.iso']            # now it's there
 
-c.add_torrentfile('/Users/pyed/Desktop/ubuntu-13.10-server-amd64.iso.torrent')
+c.add_torrentfile('/Users/pyed/Desktop/ubuntu-13.10-server-amd64.iso.torrent')                # add local torrent file
 
 c.torrents()
-#[Out]# [u'ubuntu-13.10-server-amd64.iso',
+#[Out]# [u'ubuntu-13.10-server-amd64.iso',              # added via local file
 #[Out]#  u'ubuntu-12.04.3-alternate-amd64.iso',
-#[Out]#  u'ubuntu-13.10-desktop-amd64.iso']
+#[Out]#  u'ubuntu-13.10-desktop-amd64.iso']             # added via link
 
-c.get_preferences()
+c.get_preferences()     # dump all the preferences
 #[Out]# {u'alt_dl_limit': 10,
 #[Out]#  u'alt_up_limit': 1,
 #[Out]#  u'anonymous_mode': False,
