@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import requests
 from requests.auth import HTTPDigestAuth
-from Torrent import Torrent
+from qbittorrentpy.Torrent import Torrent
 
 class Client(object):
     """ handle qBittorrent API """
