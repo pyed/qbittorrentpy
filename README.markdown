@@ -1,18 +1,26 @@
-Simple python module to interact with qBittorrent API
+Simple python module to interact with [qBittorrent]( API
 ---------------------------------
 
-Usage
+Requestemetns
+------
+[requests](https://github.com/kennethreitz/requests)
+
+How to install ?
+-----
+`python setup.py install`
+
+How to use ?
 ------
 
 the `Client` object:
 ~~~~~ python
 import qbittorrentpy
-c = qbittorrentpy.Client('localhost', port=9091)                                        # connect to qbittorent
+c = qbittorrentpy.Client('localhost', port=9091)        # connect to qbittorent
 
-c.torrents()                                                                            # return torrents list
+c.torrents()    # return torrents list
 #[Out]# [u'ubuntu-12.04.3-alternate-amd64.iso']
 
-c.get_transinfo()                                                                       # return the current speeds
+c.get_transinfo()       # return the current speeds
 #[Out]# {u'dl_info': u'D: 5.2 KiB/s - T: 143.8 KiB', u'up_info': u'U: 0 B/s - T: 0 B'}
 
 c.pause_all()
@@ -118,3 +126,78 @@ c.get_preferences()     # dump all the preferences
 
 ~~~~~
 
+the `Torrent` object
+
+~~~~~ python
+import qbittorrentpy
+c = qbittorrentpy.Client('127.0.0.1', username='admin', password='qbit', port=9091)
+
+c.torrents()    # check on torrents names
+#[Out]# [u'ubuntu-13.10-server-amd64.iso',
+#[Out]#  u'ubuntu-12.04.3-alternate-amd64.iso',
+#[Out]#  u'ubuntu-13.10-desktop-amd64.iso']
+
+t = c.get_torrent('ubuntu-13.10-server-amd64.iso')      # select torrent by name, you can select it via hash as well 
+
+t.name
+#[Out]# u'ubuntu-13.10-server-amd64.iso'
+
+t.thash
+#[Out]# u'6a36de201df2f1b2c817474c3075ff0eaa8c7785'
+
+t.size
+#[Out]# u'672.0 MiB'
+
+t.bytes_size
+#[Out]# 704643072
+
+t.pause()
+t.recheck()
+t.resume()
+
+t.add_tracker('http://announce.tracker.io')
+
+t.trackers()
+#[Out]# [{u'msg': u'',
+#[Out]#   u'num_peers': u'50',
+#[Out]#   u'status': u'Working',
+#[Out]#   u'url': u'http://torrent.ubuntu.com:6969/announce'},
+#[Out]#  {u'msg': u'',
+#[Out]#   u'num_peers': u'0',
+#[Out]#   u'status': u'Not working',
+#[Out]#   u'url': u'http://announce.tracker.io'},
+#[Out]#  {u'msg': u'',
+#[Out]#   u'num_peers': u'0',
+#[Out]#   u'status': u'Not contacted yet',
+#[Out]#   u'url': u'http://ipv6.torrent.ubuntu.com:6969/announce'}]
+
+t.files()
+#[Out]# [{u'is_seed': False,
+#[Out]#   u'name': u'ubuntu-13.10-server-amd64.iso',
+#[Out]#   u'priority': 1,
+#[Out]#   u'progress': 0,
+#[Out]#   u'size': u'672.0 MiB'}]
+
+t.set_downloadlimit(1337)
+t.set_uploadlimit(7331)
+
+t.get_downloadlimit()
+#[Out]# 1337
+
+t.get_uploadlimit()
+#[Out]# 7331
+
+t.increase_priority()
+t.max_priority()
+t.delete()      # delete and keep files
+
+c.torrents()
+#[Out]# [u'ubuntu-12.04.3-alternate-amd64.iso', u'ubuntu-13.10-desktop-amd64.iso']
+
+t = c.get_torrent(c.torrents()[0])
+t.name
+#[Out]# u'ubuntu-12.04.3-alternate-amd64.iso'
+
+t.delete_with_data()    # delete with files, be careful
+
+~~~~~
