@@ -37,7 +37,7 @@ class Torrent(object):
         try: 
             value = int(float(self.size[:-4]) * units[self.size[-3:]])
         except:
-            value = self.size
+            value = int(self.size[:-2])
 
         return value
     def properties(self):
