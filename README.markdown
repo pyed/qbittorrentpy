@@ -201,3 +201,6 @@ t.name
 t.delete_with_data()    # delete with files, be careful
 
 ~~~~~
+
+Note: If your qBittorrent freezes when you use qbittorrentpy, [read this](https://github.com/qbittorrent/qBittorrent/issues/1252)
+
