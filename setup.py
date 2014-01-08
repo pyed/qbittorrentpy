@@ -4,7 +4,7 @@ from distutils.core import setup
 
 config = {
         'name': 'qBittorrentPy',
-        'version': '0.1',
+        'version': '0.2',
         'description': 'python module to interact with qBittorrent API',
         'author': 'Abdulelah Alfntokh',
         'author_email': 'iAbdulelah@gmail.com',
