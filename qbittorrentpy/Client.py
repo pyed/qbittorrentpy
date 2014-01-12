@@ -35,7 +35,7 @@ class Client(object):
            if d['name'] == torrent_id or d['hash'] == torrent_id:
                return d
 
-       raise ValueError("Invalid torrent id")
+       raise ValueError("no torrent with the giving value: %s" % torrent_id)
 
     def torrents(self):
         torrents_dicts = self._GetRequest('/json/torrents')
